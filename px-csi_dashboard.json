@@ -117,10 +117,6 @@
       "pluginVersion": "11.5.0",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
           "disableTextWrap": false,
           "editorMode": "builder",
           "expr": "px_csi_fafb_apis_volumes_requests_total",
@@ -189,10 +185,6 @@
       "pluginVersion": "11.5.0",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
           "disableTextWrap": false,
           "editorMode": "builder",
           "exemplar": false,
@@ -274,10 +266,6 @@
       "pluginVersion": "11.5.0",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
           "disableTextWrap": false,
           "editorMode": "code",
           "exemplar": false,
@@ -346,10 +334,6 @@
       "pluginVersion": "11.5.0",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
           "disableTextWrap": false,
           "editorMode": "builder",
           "exemplar": false,
@@ -418,10 +402,6 @@
       "pluginVersion": "11.5.0",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
           "disableTextWrap": false,
           "editorMode": "builder",
           "exemplar": false,
