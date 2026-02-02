@@ -1,0 +1,504 @@
+cat <<EOF | sudo tee /root/px-poc/yamls/dashboards/px-csi_dashboard.json
+{
+"__inputs": [
+    {
+    "name": "DS_PROMETHEUS",
+    "label": "prometheus",
+    "description": "",
+    "type": "datasource",
+    "pluginId": "prometheus",
+    "pluginName": "Prometheus"
+    }
+],
+"__elements": {},
+"__requires": [
+    {
+    "type": "panel",
+    "id": "gauge",
+    "name": "Gauge",
+    "version": ""
+    },
+    {
+    "type": "grafana",
+    "id": "grafana",
+    "name": "Grafana",
+    "version": "11.5.0"
+    },
+    {
+    "type": "datasource",
+    "id": "prometheus",
+    "name": "Prometheus",
+    "version": "1.0.0"
+    },
+    {
+    "type": "panel",
+    "id": "stat",
+    "name": "Stat",
+    "version": ""
+    },
+    {
+    "type": "panel",
+    "id": "timeseries",
+    "name": "Time series",
+    "version": ""
+    }
+],
+"annotations": {
+    "list": [
+    {
+        "builtIn": 1,
+        "datasource": {
+        "type": "grafana",
+        "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+    }
+    ]
+},
+"editable": true,
+"fiscalYearStartMonth": 0,
+"graphTooltip": 0,
+"id": null,
+"links": [],
+"panels": [
+    {
+    "collapsed": false,
+    "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+    },
+    "id": 6,
+    "panels": [],
+    "title": "FlashArray",
+    "type": "row"
+    },
+    {
+    "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+    },
+    "fieldConfig": {
+        "defaults": {
+        "color": {
+            "mode": "palette-classic"
+        },
+        "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+            "legend": false,
+            "tooltip": false,
+            "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+            "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+            "group": "A",
+            "mode": "none"
+            },
+            "thresholdsStyle": {
+            "mode": "off"
+            }
+        },
+        "mappings": [],
+        "thresholds": {
+            "mode": "absolute",
+            "steps": [
+            {
+                "color": "green",
+                "value": null
+            },
+            {
+                "color": "red",
+                "value": 80
+            }
+            ]
+        }
+        },
+        "overrides": []
+    },
+    "gridPos": {
+        "h": 6,
+        "w": 10,
+        "x": 0,
+        "y": 1
+    },
+    "id": 3,
+    "options": {
+        "legend": {
+        "calcs": [],
+        "displayMode": "list",
+        "placement": "bottom",
+        "showLegend": true
+        },
+        "tooltip": {
+        "hideZeros": false,
+        "mode": "single",
+        "sort": "none"
+        }
+    },
+    "pluginVersion": "11.5.0",
+    "targets": [
+        {
+        "disableTextWrap": false,
+        "editorMode": "builder",
+        "expr": "px_csi_fafb_apis_volumes_requests_total",
+        "fullMetaSearch": false,
+        "includeNullMetadata": true,
+        "legendFormat": "__auto",
+        "range": true,
+        "refId": "A",
+        "useBackend": false,
+        "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+        }
+        }
+    ],
+    "title": "FlashArray Volume Requests",
+    "type": "timeseries"
+    },
+    {
+    "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+    },
+    "fieldConfig": {
+        "defaults": {
+        "color": {
+            "mode": "thresholds"
+        },
+        "mappings": [],
+        "thresholds": {
+            "mode": "absolute",
+            "steps": [
+            {
+                "color": "green",
+                "value": null
+            },
+            {
+                "color": "red",
+                "value": 80
+            }
+            ]
+        }
+        },
+        "overrides": []
+    },
+    "gridPos": {
+        "h": 6,
+        "w": 10,
+        "x": 10,
+        "y": 1
+    },
+    "id": 9,
+    "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+        "calcs": [
+            "lastNotNull"
+        ],
+        "fields": "",
+        "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+    },
+    "pluginVersion": "11.5.0",
+    "targets": [
+        {
+        "disableTextWrap": false,
+        "editorMode": "builder",
+        "exemplar": false,
+        "expr": "sum(px_csi_fafb_all_apis_requests_total)",
+        "format": "time_series",
+        "fullMetaSearch": false,
+        "includeNullMetadata": true,
+        "instant": false,
+        "legendFormat": "__auto",
+        "range": true,
+        "refId": "A",
+        "useBackend": false,
+        "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+        }
+        }
+    ],
+    "title": "FlashArray API Requests",
+    "type": "stat"
+    },
+    {
+    "collapsed": false,
+    "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 7
+    },
+    "id": 5,
+    "panels": [],
+    "title": "By Node",
+    "type": "row"
+    },
+    {
+    "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+    },
+    "fieldConfig": {
+        "defaults": {
+        "color": {
+            "mode": "thresholds"
+        },
+        "displayName": "dev-site1-1",
+        "mappings": [],
+        "max": 100,
+        "min": 0,
+        "thresholds": {
+            "mode": "absolute",
+            "steps": [
+            {
+                "color": "green",
+                "value": null
+            }
+            ]
+        }
+        },
+        "overrides": []
+    },
+    "gridPos": {
+        "h": 5,
+        "w": 7,
+        "x": 0,
+        "y": 8
+    },
+    "id": 2,
+    "options": {
+        "minVizHeight": 75,
+        "minVizWidth": 75,
+        "orientation": "auto",
+        "reduceOptions": {
+        "calcs": [
+            "lastNotNull"
+        ],
+        "fields": "",
+        "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true,
+        "sizing": "auto"
+    },
+    "pluginVersion": "11.5.0",
+    "targets": [
+        {
+        "disableTextWrap": false,
+        "editorMode": "code",
+        "exemplar": false,
+        "expr": "px_csi_attachments_per_node{node=\"dev-site1-1\"}",
+        "format": "time_series",
+        "fullMetaSearch": false,
+        "includeNullMetadata": true,
+        "instant": false,
+        "legendFormat": "__auto",
+        "range": true,
+        "refId": "A",
+        "useBackend": false,
+        "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+        }
+        }
+    ],
+    "title": "CSI Volume Attachments per node",
+    "type": "gauge"
+    },
+    {
+    "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+    },
+    "fieldConfig": {
+        "defaults": {
+        "color": {
+            "mode": "thresholds"
+        },
+        "displayName": "dev-site1-2",
+        "mappings": [],
+        "max": 100,
+        "min": 0,
+        "thresholds": {
+            "mode": "absolute",
+            "steps": [
+            {
+                "color": "green",
+                "value": null
+            }
+            ]
+        }
+        },
+        "overrides": []
+    },
+    "gridPos": {
+        "h": 5,
+        "w": 7,
+        "x": 7,
+        "y": 8
+    },
+    "id": 7,
+    "options": {
+        "minVizHeight": 75,
+        "minVizWidth": 75,
+        "orientation": "auto",
+        "reduceOptions": {
+        "calcs": [
+            "lastNotNull"
+        ],
+        "fields": "",
+        "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true,
+        "sizing": "auto"
+    },
+    "pluginVersion": "11.5.0",
+    "targets": [
+        {
+        "disableTextWrap": false,
+        "editorMode": "builder",
+        "exemplar": false,
+        "expr": "px_csi_attachments_per_node{node=\"dev-site1-2\"}",
+        "format": "time_series",
+        "fullMetaSearch": false,
+        "includeNullMetadata": true,
+        "instant": false,
+        "legendFormat": "__auto",
+        "range": true,
+        "refId": "A",
+        "useBackend": false,
+        "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+        }
+        }
+    ],
+    "title": "CSI Volume Attachments per node",
+    "type": "gauge"
+    },
+    {
+    "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+    },
+    "fieldConfig": {
+        "defaults": {
+        "color": {
+            "mode": "thresholds"
+        },
+        "displayName": "dev-site1-3",
+        "mappings": [],
+        "max": 100,
+        "min": 0,
+        "thresholds": {
+            "mode": "absolute",
+            "steps": [
+            {
+                "color": "green",
+                "value": null
+            }
+            ]
+        }
+        },
+        "overrides": []
+    },
+    "gridPos": {
+        "h": 5,
+        "w": 6,
+        "x": 14,
+        "y": 8
+    },
+    "id": 8,
+    "options": {
+        "minVizHeight": 75,
+        "minVizWidth": 75,
+        "orientation": "auto",
+        "reduceOptions": {
+        "calcs": [
+            "lastNotNull"
+        ],
+        "fields": "",
+        "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true,
+        "sizing": "auto"
+    },
+    "pluginVersion": "11.5.0",
+    "targets": [
+        {
+        "disableTextWrap": false,
+        "editorMode": "builder",
+        "exemplar": false,
+        "expr": "px_csi_attachments_per_node{node=\"dev-site1-3\"}",
+        "format": "time_series",
+        "fullMetaSearch": false,
+        "includeNullMetadata": true,
+        "instant": false,
+        "legendFormat": "__auto",
+        "range": true,
+        "refId": "A",
+        "useBackend": false,
+        "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+        }
+        }
+    ],
+    "title": "CSI Volume Attachments per node",
+    "type": "gauge"
+    }
+],
+"refresh": "1m",
+"schemaVersion": 40,
+"tags": [],
+"templating": {
+    "list": []
+},
+"time": {
+    "from": "now-1h",
+    "to": "now"
+},
+"timepicker": {},
+"timezone": "browser",
+"title": "PX-CSI Dashboard",
+"uid": "dfbuquxcrfe2oa",
+"version": 1,
+"weekStart": ""
+}
+EOF
